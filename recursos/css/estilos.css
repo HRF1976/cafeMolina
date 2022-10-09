@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: bisque;
+}
+
+header {
+    width: 100%;
+    overflow: hidden;
+    background-color: chocolate;
+    margin-bottom: 20px;
+
+    /* Transicion para Header grande */
+    transition-duration: 2s;
+}
+
+header .logo {
+    float: left;
+    line-height: 200px;
+    margin: auto;
+    font-size: 50px;
+}
+
+header nav {
+    float: right;
+    line-height: 200px;
+}
+
+header nav a {
+    display: inline-block;
+    color: aqua;
+    text-decoration: none;
+    padding: 10px 20px;
+    line-height: normal;
+    transition: all 500ms ease;
+    font-size: 20px;
+}
+
+header nav a:hover {
+    background-color: blue;
+    border-radius: 20px;
+}
+
+.header2 {
+    position: fixed;
+    height: 100px;
+    background-color: rgba(210, 105, 30, 0.3);
+
+    /* Transicion para Header pequeño */
+    transition-duration: 2s;
+}
+
+.header2 .logo {
+    line-height: 100px;
+    font-size: 30px;
+}
+
+.header2 nav {
+    line-height: 100px;
+}
+
+@media screen and (max-width: 910px) {
+
+    header .logo,
+    header nav {
+        width: 100%;
+        text-align: center;
+        line-height: 100px;
+        height: 50%;
+    }
+}
+
+div img {
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.containerabout {
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: blue;
+    height: auto;
+    width: 100%;
+
+}
+
+.item {
+    background-color: gray;
+    font-size: 30px;
+}
+
+.imagen {
+    padding: 0;
+    height: 500px;
+    width: 500px;
+}
+
+@media all and (max-width: 900px) {
+
+    /*El aside debe pasar hacia abajo*/
+    .containerabout {
+        flex-direction: column;
+        background-size: 100%;
+    }
+
+    .imagen {
+        display: block;
+        overflow: hidden;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding-left: 500px;
+        width: 500px;
+        height: 236px;
+        background: url('recursos/img/Rellenobanner.jpg')
+            /* background: url(https://images.unsplash.com/photo-1627412466304-5ea99923ab5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyODAyNTc5NQ&ixlib=rb-1.2.1&q=80&w=400) */
+    }
+
+}
+
+/* CONTENIDO AGREGADO HERNAN */
+.contenedor{
+    width: 90%;
+    max-width: 1000px; /*ancho máximo de la página*/
+    margin: 20px auto; /*auto permite centrar nuestra página en forma horizontal*/
+    display: grid;
+    gap: 20px; /*nos ahorramos tenes que poner márgenes entre los elementos*/
+
+    /*3 columnas: contenido (con 2 widgets) + sidebar*/
+    grid-template-columns: repeat(4,1fr);
+
+    /*4 filas: header, contenido, widgets, footer*/
+    grid-template-rows: repeat(4, auto);
+
+    grid-template-areas: "encabezado encabezado encabezado encabezado"
+                         "opinion1 opinion2 opinion3 sidebar"
+                         "opnion4 opinion5 opinion6 sidebar"
+                         "pie pie pie pie";
+}
+.encabezado{
+    background-color:chocolate ;
+}
+
+.contenedor > div,
+.contenedor .encabezado,
+.contenedor .contenido,
+.contenedor .sidebar,
+.contenedor .pie {
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.contenedor .encabezado{
+    background: chocolate;
+    color:brown;
+    grid-area: encabezado; 
+    text-align: center;
+    font-family: 'Ms Madi', cursive;
+    font-size: 2.5em;
+}
+
+.contenedor .contenido{
+    background: #fff;
+    grid-area: contenido; 
+}
+
+.contenedor .sidebar{
+    background: orange;
+    /*utilizamos flexbox para alinear el contenido*/
+    display: flex;
+    /* align-items: center;
+    justify-content:baseline ; */
+    background-image: url("/recursos/img/cafeHumeante.jpg");
+    grid-area: sidebar; 
+    max-width: 100% max-height=100%; 
+    object-fit: contain;
+}
+
+.contenedor .opinion1,
+.contenedor .opinion3,
+.contenedor .opinion4,
+.contenedor .opinion4,
+.contenedor .opinion5,
+.contenedor .opinion6,
+.contenedor .opinion2{
+    background: rgb(82, 109, 126);
+    color: white;
+    height: 100px;
+    /*utilizamos flexbox para alinear el contenido*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ms Madi', cursive;
+}
+
+.contenedor .widget-1{
+    grid-area: widget-1; 
+}
+
+.contenedor .widget-2{
+    grid-area: widget-2; 
+}
+
+.contenedor .pie{
+    background: chocolate;
+    color: brown;
+    grid-area: pie; 
+    text-align: center;
+    font-family: 'Ms Madi', cursive;
+    font-size: 2em;
+
+@media screen and (max-width: 768px){
+    .contenedor{
+        grid-template-areas: "encabezado encabezado encabezado encabezado"
+                             "opinion1 opinion1 opinion2 sidebar"
+                             "opinion3 opinion4 opinion4 sidebar"
+                             "opinion5 opinion5 opinion6 sidebar"
+                             "pie pie pie pie";
+    }
+}
+
+@media screen and (max-width: 450px){
+    .contenedor{
+        grid-template-areas: "encabezado encabezado encabezado encabezado"
+        "opinion1 opinion1 opinion1 sidebar"
+        "opinion2 opinion2 opinion2 sidebar"
+        "opinion3 opinion3 opinion3 sidebar"
+        "opinion4 opinion4 opinion4 sidebar"
+        "opinio5 opinion5 opinion5 sidebar"
+        "opinion6 opinion6 opinion6 sidebar"
+        "pie pie pie pie";
+    }
+}
